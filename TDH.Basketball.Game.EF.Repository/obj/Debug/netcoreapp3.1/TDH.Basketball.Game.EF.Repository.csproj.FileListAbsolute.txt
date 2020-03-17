@@ -1,0 +1,11 @@
+C:\Zhuo\code\TDH.Basketball.Game.Home\TDH.Basketball.Game.EF.Repository\obj\Debug\netcoreapp3.1\TDH.Basketball.Game.EF.Repository.csprojAssemblyReference.cache
+C:\Zhuo\code\TDH.Basketball.Game.Home\TDH.Basketball.Game.EF.Repository\obj\Debug\netcoreapp3.1\TDH.Basketball.Game.EF.Repository.AssemblyInfoInputs.cache
+C:\Zhuo\code\TDH.Basketball.Game.Home\TDH.Basketball.Game.EF.Repository\obj\Debug\netcoreapp3.1\TDH.Basketball.Game.EF.Repository.AssemblyInfo.cs
+C:\Zhuo\code\TDH.Basketball.Game.Home\TDH.Basketball.Game.EF.Repository\bin\Debug\netcoreapp3.1\TDH.Basketball.Game.EF.Repository.deps.json
+C:\Zhuo\code\TDH.Basketball.Game.Home\TDH.Basketball.Game.EF.Repository\bin\Debug\netcoreapp3.1\TDH.Basketball.Game.EF.Repository.dll
+C:\Zhuo\code\TDH.Basketball.Game.Home\TDH.Basketball.Game.EF.Repository\bin\Debug\netcoreapp3.1\TDH.Basketball.Game.EF.Repository.pdb
+C:\Zhuo\code\TDH.Basketball.Game.Home\TDH.Basketball.Game.EF.Repository\bin\Debug\netcoreapp3.1\TDH.Basketball.Game.EF.Core.dll
+C:\Zhuo\code\TDH.Basketball.Game.Home\TDH.Basketball.Game.EF.Repository\bin\Debug\netcoreapp3.1\TDH.Basketball.Game.EF.Core.pdb
+C:\Zhuo\code\TDH.Basketball.Game.Home\TDH.Basketball.Game.EF.Repository\obj\Debug\netcoreapp3.1\TDH.Basketball.Game.EF.Repository.csproj.CopyComplete
+C:\Zhuo\code\TDH.Basketball.Game.Home\TDH.Basketball.Game.EF.Repository\obj\Debug\netcoreapp3.1\TDH.Basketball.Game.EF.Repository.dll
+C:\Zhuo\code\TDH.Basketball.Game.Home\TDH.Basketball.Game.EF.Repository\obj\Debug\netcoreapp3.1\TDH.Basketball.Game.EF.Repository.pdb

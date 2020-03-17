@@ -1,0 +1,12 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\TDH.Basketball.Game.EF.Core\TDH.Basketball.Game.EF.Core.csproj" />
+    <ProjectReference Include="..\TDH.Basketball.Game.EF.Repository\TDH.Basketball.Game.EF.Repository.csproj" />
+  </ItemGroup>
+
+</Project>

@@ -1,0 +1,13 @@
+C:\Zhuo\code\TDH.Basketball.Game.Home\TDH.Basketball.Game.EF.Manager\obj\Debug\netcoreapp3.1\TDH.Basketball.Game.EF.Manager.csprojAssemblyReference.cache
+C:\Zhuo\code\TDH.Basketball.Game.Home\TDH.Basketball.Game.EF.Manager\obj\Debug\netcoreapp3.1\TDH.Basketball.Game.EF.Manager.AssemblyInfoInputs.cache
+C:\Zhuo\code\TDH.Basketball.Game.Home\TDH.Basketball.Game.EF.Manager\obj\Debug\netcoreapp3.1\TDH.Basketball.Game.EF.Manager.AssemblyInfo.cs
+C:\Zhuo\code\TDH.Basketball.Game.Home\TDH.Basketball.Game.EF.Manager\bin\Debug\netcoreapp3.1\TDH.Basketball.Game.EF.Manager.deps.json
+C:\Zhuo\code\TDH.Basketball.Game.Home\TDH.Basketball.Game.EF.Manager\bin\Debug\netcoreapp3.1\TDH.Basketball.Game.EF.Manager.dll
+C:\Zhuo\code\TDH.Basketball.Game.Home\TDH.Basketball.Game.EF.Manager\bin\Debug\netcoreapp3.1\TDH.Basketball.Game.EF.Manager.pdb
+C:\Zhuo\code\TDH.Basketball.Game.Home\TDH.Basketball.Game.EF.Manager\bin\Debug\netcoreapp3.1\TDH.Basketball.Game.EF.Core.dll
+C:\Zhuo\code\TDH.Basketball.Game.Home\TDH.Basketball.Game.EF.Manager\bin\Debug\netcoreapp3.1\TDH.Basketball.Game.EF.Repository.dll
+C:\Zhuo\code\TDH.Basketball.Game.Home\TDH.Basketball.Game.EF.Manager\bin\Debug\netcoreapp3.1\TDH.Basketball.Game.EF.Core.pdb
+C:\Zhuo\code\TDH.Basketball.Game.Home\TDH.Basketball.Game.EF.Manager\bin\Debug\netcoreapp3.1\TDH.Basketball.Game.EF.Repository.pdb
+C:\Zhuo\code\TDH.Basketball.Game.Home\TDH.Basketball.Game.EF.Manager\obj\Debug\netcoreapp3.1\TDH.Basketball.Game.EF.Manager.csproj.CopyComplete
+C:\Zhuo\code\TDH.Basketball.Game.Home\TDH.Basketball.Game.EF.Manager\obj\Debug\netcoreapp3.1\TDH.Basketball.Game.EF.Manager.dll
+C:\Zhuo\code\TDH.Basketball.Game.Home\TDH.Basketball.Game.EF.Manager\obj\Debug\netcoreapp3.1\TDH.Basketball.Game.EF.Manager.pdb

@@ -1,0 +1,8 @@
+C:\Zhuo\code\TDH.Basketball.Game.Home\TDH.Basketball.Game.EF.Core\bin\Debug\netcoreapp3.1\TDH.Basketball.Game.EF.Core.deps.json
+C:\Zhuo\code\TDH.Basketball.Game.Home\TDH.Basketball.Game.EF.Core\bin\Debug\netcoreapp3.1\TDH.Basketball.Game.EF.Core.dll
+C:\Zhuo\code\TDH.Basketball.Game.Home\TDH.Basketball.Game.EF.Core\bin\Debug\netcoreapp3.1\TDH.Basketball.Game.EF.Core.pdb
+C:\Zhuo\code\TDH.Basketball.Game.Home\TDH.Basketball.Game.EF.Core\obj\Debug\netcoreapp3.1\TDH.Basketball.Game.EF.Core.AssemblyInfoInputs.cache
+C:\Zhuo\code\TDH.Basketball.Game.Home\TDH.Basketball.Game.EF.Core\obj\Debug\netcoreapp3.1\TDH.Basketball.Game.EF.Core.AssemblyInfo.cs
+C:\Zhuo\code\TDH.Basketball.Game.Home\TDH.Basketball.Game.EF.Core\obj\Debug\netcoreapp3.1\TDH.Basketball.Game.EF.Core.dll
+C:\Zhuo\code\TDH.Basketball.Game.Home\TDH.Basketball.Game.EF.Core\obj\Debug\netcoreapp3.1\TDH.Basketball.Game.EF.Core.pdb
+C:\Zhuo\code\TDH.Basketball.Game.Home\TDH.Basketball.Game.EF.Core\obj\Debug\netcoreapp3.1\TDH.Basketball.Game.EF.Core.csprojAssemblyReference.cache
