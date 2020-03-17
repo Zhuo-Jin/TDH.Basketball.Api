@@ -15,25 +15,25 @@ namespace TDH.Basketball.Game.Home.Controllers
     [ApiController]
     public class PlayersController : ControllerBase
     {
-        private readonly IPlayerManager _playermManager;
+        private readonly IPlayerManager _playerManager;
 
-        public PlayersController(IPlayerManager playermManager)
+        public PlayersController(IPlayerManager playerManager)
         {
-            _playermManager = playermManager;
+            _playerManager = playermManager;
         }
 
         // GET: api/Players
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Player>>> GetPlayers()
         {
-            return await _playermManager.GetAllPlayersAsync();
+            return await _playerManager.GetAllPlayersAsync();
         }
 
         // GET: api/Players/5
         [HttpGet("{id}")]
         public async Task<ActionResult<Player>> GetPlayer(int id)
         {
-            var player = await _playermManager.GetPlayerByIdAsync(id);
+            var player = await _playerManager.GetPlayerByIdAsync(id);
 
             if (player == null)
             {
@@ -51,7 +51,7 @@ namespace TDH.Basketball.Game.Home.Controllers
         [HttpPost("upsert")]
         public async Task<ActionResult<Player>> UpsertPlayer(Player player)
         {
-            if (await _playermManager.AddOrUpdatePlayerAsync(player))
+            if (await _playerManager.AddOrUpdatePlayerAsync(player))
             {
                 return Ok(true);
             }
@@ -65,13 +65,13 @@ namespace TDH.Basketball.Game.Home.Controllers
         [HttpDelete("{id}")]
         public async Task<ActionResult<Player>> DeletePlayer(int id)
         {
-            var player = await _playermManager.GetPlayerByIdAsync(id);
+            var player = await _playerManager.GetPlayerByIdAsync(id);
             if (player == null)
             {
                 return NotFound();
             }
 
-            if (await _playermManager.RemovePlayerAsync(player))
+            if (await _playerManager.RemovePlayerAsync(player))
             {
                 return Ok(true);
             }

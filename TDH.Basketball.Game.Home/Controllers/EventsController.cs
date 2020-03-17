@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using TDH.Basketball.Game.EF.Core;
 using TDH.Basketball.Game.EF.Core.EntityClasses;
+using TDH.Basketball.Game.EF.Manager.Interface;
 
 namespace TDH.Basketball.Game.Home.Controllers
 {
@@ -15,7 +16,7 @@ namespace TDH.Basketball.Game.Home.Controllers
     public class EventsController : ControllerBase
     {
         private readonly TDHDBContext _context;
-
+        private readonly IEventManager _eventManager;
         public EventsController(TDHDBContext context)
         {
             _context = context;

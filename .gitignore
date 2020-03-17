@@ -1,0 +1,6 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/.vs/TDH.Basketball.Game.Home/v16/Server/sqlite3
+/TDH.Basketball.Game.EF.Core/obj/*.*
