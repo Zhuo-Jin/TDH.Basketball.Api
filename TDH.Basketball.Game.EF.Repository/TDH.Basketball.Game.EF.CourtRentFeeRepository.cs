@@ -19,7 +19,7 @@ namespace TDH.Basketball.Game.EF.Repository
 
         }
 
-        public async override Task<List<CourtRentFee>> GetAsync()
+        public async override Task<IEnumerable<CourtRentFee>> GetAsync()
         {
 
             return await _context.CourtRentFees
@@ -31,11 +31,16 @@ namespace TDH.Basketball.Game.EF.Repository
 
         public async override Task<CourtRentFee> GetAsync(int Id)
         {
-            return await _context.CourtRentFees
+            var courtRentFee =  await _context.CourtRentFees
                             .Include(c => c.Centre)
                             .Include(c => c.CourtType)
                             .Where(t => t.IsCurrent)
                             .FirstOrDefaultAsync(t => t.Id == Id);
+
+            if (courtRentFee != null)
+                _context.Entry(courtRentFee).State = EntityState.Detached; // detached with no tracking
+
+            return courtRentFee;
         }
     }
 }

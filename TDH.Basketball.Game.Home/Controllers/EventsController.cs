@@ -15,97 +15,63 @@ namespace TDH.Basketball.Game.Home.Controllers
     [ApiController]
     public class EventsController : ControllerBase
     {
-        private readonly TDHDBContext _context;
+
         private readonly IEventManager _eventManager;
-        public EventsController(TDHDBContext context)
+        public EventsController(IEventManager eventManager)
         {
-            _context = context;
+            _eventManager = eventManager;
         }
 
         // GET: api/Events
-        [HttpGet]
-        public async Task<ActionResult<IEnumerable<Event>>> GetEvents()
+        [HttpGet("ByTerm/{id}")]
+        public async Task<ActionResult<IEnumerable<Event>>> GetEventsByTermId(int id)
         {
-            return await _context.Events.ToListAsync();
+            return await _eventManager.GetAllEventsByTermIdAsync(id);
         }
 
         // GET: api/Events/5
         [HttpGet("{id}")]
         public async Task<ActionResult<Event>> GetEvent(int id)
         {
-            var @event = await _context.Events.FindAsync(id);
-
-            if (@event == null)
-            {
-                return NotFound();
-            }
-
-            return @event;
+            return await _eventManager.GetEventByIdAsync(id);
+  
         }
 
-        // PUT: api/Events/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for
-        // more details see https://aka.ms/RazorPagesCRUD.
-        [HttpPut("{id}")]
-        public async Task<IActionResult> PutEvent(int id, Event @event)
-        {
-            if (id != @event.Id)
-            {
-                return BadRequest();
-            }
-
-            _context.Entry(@event).State = EntityState.Modified;
-
-            try
-            {
-                await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!EventExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
-            }
-
-            return NoContent();
-        }
 
         // POST: api/Events
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for
         // more details see https://aka.ms/RazorPagesCRUD.
-        [HttpPost]
-        public async Task<ActionResult<Event>> PostEvent(Event @event)
+        [HttpPost("upsert")]
+        public async Task<ActionResult<bool>> Upsert(Event Event)
         {
-            _context.Events.Add(@event);
-            await _context.SaveChangesAsync();
-
-            return CreatedAtAction("GetEvent", new { id = @event.Id }, @event);
+            if (await _eventManager.AddOrUpdateEventAsync(Event))
+                return Ok(true);
+            else
+            {
+                return new StatusCodeResult(StatusCodes.Status500InternalServerError);
+            }
         }
 
         // DELETE: api/Events/5
         [HttpDelete("{id}")]
         public async Task<ActionResult<Event>> DeleteEvent(int id)
         {
-            var @event = await _context.Events.FindAsync(id);
-            if (@event == null)
+            var ballEvent = await _eventManager.GetEventByIdAsync(id);
+            if (ballEvent == null)
             {
                 return NotFound();
             }
 
-            _context.Events.Remove(@event);
-            await _context.SaveChangesAsync();
-
-            return @event;
+            if (await _eventManager.RemoveEventAsync(ballEvent))
+            {
+                return Ok(true);
+            }
+            else
+            {
+                return new StatusCodeResult(StatusCodes.Status500InternalServerError); ;
+            }
         }
 
-        private bool EventExists(int id)
-        {
-            return _context.Events.Any(e => e.Id == id);
-        }
+
     }
 }

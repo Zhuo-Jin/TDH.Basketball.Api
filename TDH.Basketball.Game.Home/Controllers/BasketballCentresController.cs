@@ -25,7 +25,7 @@ namespace TDH.Basketball.Game.Home.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<BasketballCentre>>> GetBasketballCentres()
         {
-            return await _basketballCentreManager.GetAllCentresAsync();
+            return Ok(await _basketballCentreManager.GetAllCentresAsync());
         }
 
         // GET: api/BasketballCentres/5

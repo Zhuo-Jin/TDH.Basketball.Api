@@ -2,6 +2,7 @@
 using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using TDH.Basketball.Game.EF.Core;
 
@@ -35,7 +36,7 @@ namespace TDH.Basketball.Game.EF.Repository
             }
         }
 
-        public async Task<bool> CreateRangeAsync(List<TEntity> Entities)
+        public async Task<bool> CreateRangeAsync(IEnumerable<TEntity> Entities)
         {
             try
             {
@@ -84,15 +85,19 @@ namespace TDH.Basketball.Game.EF.Repository
         }
 
 
-        public async virtual Task<List<TEntity>> GetAsync()
+        public async virtual Task<IEnumerable<TEntity>> GetAsync()
         {
-            
-            return await _context.Set<TEntity>().ToListAsync();
+            // As IEnumrable doesnt do anything just wrap with task to cate with the same patten
+            return await Task.Run(() => _context.Set<TEntity>().AsNoTracking().AsEnumerable());
         }
 
         public async virtual Task<TEntity> GetAsync(int Id)
         {
-            return await _context.Set<TEntity>().FindAsync(Id);
+            var entity =await  _context.Set<TEntity>().FindAsync(Id);
+            if (entity != null)
+                _context.Entry(entity).State = EntityState.Detached; // detached with no tracking
+
+            return entity;
         }
 
         
@@ -120,11 +125,9 @@ namespace TDH.Basketball.Game.EF.Repository
             return bool.Parse(returnValue.ToString());
         }
 
-        public async Task<List<TEntity>> GetByExtensionFuncAsync(string Name, Func<string, Task<List<TEntity>>> FindEntityByExtensionFunc)
+        public async Task<IEnumerable<TEntity>> GetByExtensionFuncAsync(string Name, Func<string, Task<IEnumerable<TEntity>>> FindEntityByExtensionFunc)
         {
             return await FindEntityByExtensionFunc(Name);
         }
-
-        
     }
 }

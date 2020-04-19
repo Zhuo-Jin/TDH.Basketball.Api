@@ -8,7 +8,7 @@ namespace TDH.Basketball.Game.EF.Manager.Interface
 {
     public interface IBasketballCentreManager
     {
-        Task<List<BasketballCentre>> GetAllCentresAsync();
+        Task<IEnumerable<BasketballCentre>> GetAllCentresAsync();
 
         Task<BasketballCentre> GetCentreByIdAsync(int Id);
 

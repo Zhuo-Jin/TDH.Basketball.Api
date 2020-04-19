@@ -20,23 +20,28 @@ namespace TDH.Basketball.Game.EF.Repository
 
         }
 
-        public async override Task<List<Attendee>> GetAsync()
+        public async override Task<IEnumerable<Attendee>> GetAsync()
         {
 
             return await _context.Attendees
                             .Include(a => a.Player)
                             .Include(a => a.ReplacedPlayer)
                             .Include(a => a.Event)
+                            .AsNoTracking()
                             .ToListAsync();
         }
 
         public async override Task<Attendee> GetAsync(int Id)
         {
-            return await _context.Attendees
+            var attendee = await _context.Attendees
                             .Include(a => a.Player)
                             .Include(a => a.ReplacedPlayer)
                             .Include(a => a.Event)
                             .FirstOrDefaultAsync(a => a.Id == Id);
+            if (attendee != null)
+                _context.Entry(attendee).State = EntityState.Detached; // detached with no tracking
+
+            return attendee;
         }
 
 

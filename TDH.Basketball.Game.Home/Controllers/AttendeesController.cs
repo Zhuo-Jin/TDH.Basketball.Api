@@ -15,11 +15,10 @@ namespace TDH.Basketball.Game.Home.Controllers
     [ApiController]
     public class AttendeesController : ControllerBase
     {
-        private readonly TDHDBContext _context;
         private readonly IAttendeeManager _attendeeManager;
         public AttendeesController(TDHDBContext context, IAttendeeManager attendeeManager)
         {
-            _context = context;
+
             _attendeeManager = attendeeManager;
         }
 
@@ -44,7 +43,7 @@ namespace TDH.Basketball.Game.Home.Controllers
             return Ok(attendees);
         }
 
-        [HttpPost]
+        [HttpPost("upsert")]
         public async Task<ActionResult<bool>> Upsert(Attendee attendee)
         {
             if (await _attendeeManager.AddOrUpdateAttendeeAsync(attendee))
@@ -78,9 +77,5 @@ namespace TDH.Basketball.Game.Home.Controllers
                 return new StatusCodeResult(StatusCodes.Status500InternalServerError); ;
         }
 
-        private bool AttendeeExists(int id)
-        {
-            return _context.Attendees.Any(e => e.Id == id);
-        }
     }
 }

@@ -50,7 +50,7 @@ namespace TDH.Basketball.Game.EF.Manager.Manager
             }
         }
 
-        public async Task<List<CourtRentFee>> GetAllFeesAsync()
+        public async Task<IEnumerable<CourtRentFee>> GetAllFeesAsync()
         {
             return await _courtRentFeeRepository.GetAsync();
         }

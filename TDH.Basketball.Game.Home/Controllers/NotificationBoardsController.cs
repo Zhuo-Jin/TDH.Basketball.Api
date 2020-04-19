@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using TDH.Basketball.Game.EF.Core;
 using TDH.Basketball.Game.EF.Core.EntityClasses;
+using TDH.Basketball.Game.EF.Manager.Interface;
 
 namespace TDH.Basketball.Game.Home.Controllers
 {
@@ -14,25 +15,25 @@ namespace TDH.Basketball.Game.Home.Controllers
     [ApiController]
     public class NotificationBoardsController : ControllerBase
     {
-        private readonly TDHDBContext _context;
+        private readonly INotificationBoardManager _notificationBoardManager;
 
-        public NotificationBoardsController(TDHDBContext context)
+        public NotificationBoardsController(INotificationBoardManager notificationBoardManager)
         {
-            _context = context;
+            _notificationBoardManager = notificationBoardManager;
         }
 
         // GET: api/NotificationBoards
         [HttpGet]
         public async Task<ActionResult<IEnumerable<NotificationBoard>>> GetNotificationBoards()
         {
-            return await _context.NotificationBoards.ToListAsync();
+            return await _notificationBoardManager.GetAllReleasedNotificationBoardsAsync();
         }
 
         // GET: api/NotificationBoards/5
         [HttpGet("{id}")]
         public async Task<ActionResult<NotificationBoard>> GetNotificationBoard(int id)
         {
-            var notificationBoard = await _context.NotificationBoards.FindAsync(id);
+            var notificationBoard = await _notificationBoardManager.GetNotificationBoardByIdAsync(id);
 
             if (notificationBoard == null)
             {
@@ -42,69 +43,41 @@ namespace TDH.Basketball.Game.Home.Controllers
             return notificationBoard;
         }
 
-        // PUT: api/NotificationBoards/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for
-        // more details see https://aka.ms/RazorPagesCRUD.
-        [HttpPut("{id}")]
-        public async Task<IActionResult> PutNotificationBoard(int id, NotificationBoard notificationBoard)
-        {
-            if (id != notificationBoard.Id)
-            {
-                return BadRequest();
-            }
 
-            _context.Entry(notificationBoard).State = EntityState.Modified;
-
-            try
-            {
-                await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!NotificationBoardExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
-            }
-
-            return NoContent();
-        }
 
         // POST: api/NotificationBoards
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for
         // more details see https://aka.ms/RazorPagesCRUD.
-        [HttpPost]
-        public async Task<ActionResult<NotificationBoard>> PostNotificationBoard(NotificationBoard notificationBoard)
+        [HttpPost("upsert")]
+        public async Task<ActionResult<bool>> PostNotificationBoard(NotificationBoard notificationBoard)
         {
-            _context.NotificationBoards.Add(notificationBoard);
-            await _context.SaveChangesAsync();
-
-            return CreatedAtAction("GetNotificationBoard", new { id = notificationBoard.Id }, notificationBoard);
+            if (await _notificationBoardManager.AddOrUpdateNotificationBoardAsync(notificationBoard))
+            {
+                return Ok(true);
+            }
+            else {
+                return new StatusCodeResult(StatusCodes.Status500InternalServerError); 
+            }
         }
 
         // DELETE: api/NotificationBoards/5
         [HttpDelete("{id}")]
         public async Task<ActionResult<NotificationBoard>> DeleteNotificationBoard(int id)
         {
-            var notificationBoard = await _context.NotificationBoards.FindAsync(id);
+            var notificationBoard = await _notificationBoardManager.GetNotificationBoardByIdAsync(id);
             if (notificationBoard == null)
             {
                 return NotFound();
             }
 
-            _context.NotificationBoards.Remove(notificationBoard);
-            await _context.SaveChangesAsync();
-
+            if (!await _notificationBoardManager.RemoveNotificationBoardAsync(notificationBoard))
+            {
+                return new StatusCodeResult(StatusCodes.Status500InternalServerError);
+            }
+ 
             return notificationBoard;
         }
 
-        private bool NotificationBoardExists(int id)
-        {
-            return _context.NotificationBoards.Any(e => e.Id == id);
-        }
+        
     }
 }

@@ -36,7 +36,7 @@ namespace TDH.Basketball.Game.EF.Manager.Manager
             }
         }
 
-        public async Task<List<BasketballCentre>> GetAllCentresAsync()
+        public async Task<IEnumerable<BasketballCentre>> GetAllCentresAsync()
         {
             return await _basketballCentreRepository.GetAsync();
         }

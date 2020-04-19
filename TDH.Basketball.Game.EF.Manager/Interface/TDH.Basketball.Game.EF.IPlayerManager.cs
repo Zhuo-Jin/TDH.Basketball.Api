@@ -8,10 +8,10 @@ namespace TDH.Basketball.Game.EF.Manager.Interface
 {
     public interface IPlayerManager
     {
-        Task<List<Player>> GetAllPlayersAsync();
+        Task<IEnumerable<Player>> GetAllPlayersAsync();
 
         Task<Player> GetPlayerByIdAsync(int Id);
-        Task<List<Player>> GetPlayerByNickNameAsync(string Name);
+        Task<IEnumerable<Player>> GetPlayerByNickNameAsync(string Name);
 
         Task<Player> GetPlayerByEmailAsync(string Email);
         Task<bool> AddOrUpdatePlayerAsync(Player Player);

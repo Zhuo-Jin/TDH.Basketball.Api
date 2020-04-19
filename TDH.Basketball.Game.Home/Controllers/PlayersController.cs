@@ -19,14 +19,14 @@ namespace TDH.Basketball.Game.Home.Controllers
 
         public PlayersController(IPlayerManager playerManager)
         {
-            _playerManager = playermManager;
+            _playerManager = playerManager;
         }
 
         // GET: api/Players
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Player>>> GetPlayers()
         {
-            return await _playerManager.GetAllPlayersAsync();
+            return Ok(await _playerManager.GetAllPlayersAsync());
         }
 
         // GET: api/Players/5
@@ -49,7 +49,7 @@ namespace TDH.Basketball.Game.Home.Controllers
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for
         // more details see https://aka.ms/RazorPagesCRUD.
         [HttpPost("upsert")]
-        public async Task<ActionResult<Player>> UpsertPlayer(Player player)
+        public async Task<ActionResult<bool>> UpsertPlayer(Player player)
         {
             if (await _playerManager.AddOrUpdatePlayerAsync(player))
             {

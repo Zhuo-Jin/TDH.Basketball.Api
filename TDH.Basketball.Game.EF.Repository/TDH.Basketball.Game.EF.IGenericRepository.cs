@@ -7,15 +7,15 @@ namespace TDH.Basketball.Game.EF.Repository
 {
     public interface IGenericRepository<TEntity> where TEntity : class
     {
-        Task<List<TEntity>> GetAsync();
+        Task<IEnumerable<TEntity>> GetAsync();
 
         Task<TEntity> GetAsync(int Id);
 
-        Task<List<TEntity>> GetByExtensionFuncAsync(string Name, Func<string, Task<List<TEntity>>> FindEntityByExtensionFunc);
+        Task<IEnumerable<TEntity>> GetByExtensionFuncAsync(string Name, Func<string, Task<IEnumerable<TEntity>>> FindEntityByExtensionFunc);
 
         Task<TEntity> CreateAsync(TEntity Entity);
 
-        Task<bool> CreateRangeAsync(List<TEntity> Entities);
+        Task<bool> CreateRangeAsync(IEnumerable<TEntity> Entities);
 
         Task<bool> UpdateAsync(int Id, TEntity Entity);
 

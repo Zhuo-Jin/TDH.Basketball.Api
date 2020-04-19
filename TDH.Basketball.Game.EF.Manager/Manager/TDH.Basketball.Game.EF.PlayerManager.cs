@@ -33,7 +33,7 @@ namespace TDH.Basketball.Game.EF.Manager.Manager
             }
         }
 
-        public async Task<List<Player>> GetAllPlayersAsync()
+        public async Task<IEnumerable<Player>> GetAllPlayersAsync()
         {
             return await _playerRepository.GetAsync();
         }
@@ -53,7 +53,7 @@ namespace TDH.Basketball.Game.EF.Manager.Manager
             return await _playerRepository.GetAsync(Id);
         }
 
-        public async Task<List<Player>> GetPlayerByNickNameAsync(string Name)
+        public async Task<IEnumerable<Player>> GetPlayerByNickNameAsync(string Name)
         {
             return await _playerRepository.GetByExtensionFuncAsync(Name,
                     async name =>

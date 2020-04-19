@@ -26,7 +26,7 @@ namespace TDH.Basketball.Game.Home.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<CourtRentFee>>> GetCourtRentFees()
         {
-            return await _courtRentFeeManager.GetAllFeesAsync();
+            return Ok(await _courtRentFeeManager.GetAllFeesAsync());
         }
 
         // GET: api/CourtRentFees/5
@@ -43,12 +43,12 @@ namespace TDH.Basketball.Game.Home.Controllers
             return courtRentFee;
         }
 
- 
+
 
         // POST: api/CourtRentFees
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for
         // more details see https://aka.ms/RazorPagesCRUD.
-        [HttpPost]
+        [HttpPost("upsert")]
         public async Task<ActionResult<bool>> PostCourtRentFee(CourtRentFee courtRentFee)
         {
             return await _courtRentFeeManager.AddOrUpdateFeeAsync(courtRentFee);
